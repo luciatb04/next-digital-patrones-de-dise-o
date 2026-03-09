@@ -13,3 +13,8 @@
 - **3.1** Un constructor con muchos parametros puede dar muchos problemas tales como que si hay algunos opcionales eso se llena de nulls y que sea más dificultoso para entender.
 - **3.2**Con el Patron Builder
 - **3.3** El Patron Builder
+
+## Ejercicio 4) 
+- **4.1** Que cada clase tendría su propio mapa, por lo tanto no compartirían batallas
+- **4.2** Tenemos que proporcionar un punto de acceso global a dicha instancia
+- **4.3** El patron Singleton
