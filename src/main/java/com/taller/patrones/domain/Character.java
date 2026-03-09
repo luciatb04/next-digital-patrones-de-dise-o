@@ -5,6 +5,7 @@ package com.taller.patrones.domain;
  */
 public class Character {
 
+
     private final String name;
     private int currentHp;
     private final int maxHp;
@@ -12,15 +13,15 @@ public class Character {
     private final int defense;
     private final int speed;
 
-    public Character(String name, int maxHp, int attack, int defense, int speed) {
-        this.name = name;
-        this.maxHp = maxHp;
-        this.currentHp = maxHp;
-        this.attack = attack;
-        this.defense = defense;
-        this.speed = speed;
-    }
 
+    public Character(CharacterBuilder builder) {
+        this.name = builder.name;
+        this.maxHp = builder.maxHp;
+        this.currentHp = builder.currentHp != 0 ? builder.currentHp : builder.maxHp;
+        this.attack = builder.attack;
+        this.defense = builder.defense;
+        this.speed = builder.speed;
+    }
     public String getName() { return name; }
     public int getCurrentHp() { return currentHp; }
     public int getMaxHp() { return maxHp; }
