@@ -13,7 +13,6 @@ import com.taller.patrones.application.observer.BattleEventBell;
 import com.taller.patrones.application.observer.DamageTrackerObserver;
 import com.taller.patrones.application.observer.BattleLogObserver;
 import com.taller.patrones.application.observer.GameStateObserver;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
