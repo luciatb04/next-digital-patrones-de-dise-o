@@ -17,6 +17,7 @@ public class BattleRepository {
     private static final BattleRepository INSTANCE = new BattleRepository();
 
     private final Map<String, Battle> battles = new ConcurrentHashMap<>();
+
     private BattleRepository(){}
     public static BattleRepository getInstance(){
         return INSTANCE;

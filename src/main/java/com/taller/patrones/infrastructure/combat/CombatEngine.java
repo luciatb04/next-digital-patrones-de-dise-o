@@ -21,8 +21,7 @@ public class CombatEngine {
     }
 
     public int calculateDamage(Character attacker, Character defender, Attack attack) {
-        DamageStrategy strategy =
-                DamageSelector.getStrategy(attack.getType());
+        DamageStrategy strategy = DamageSelector.getStrategy(attack.getType());
 
         return strategy.calculateDamage(attacker, defender, attack);
     }

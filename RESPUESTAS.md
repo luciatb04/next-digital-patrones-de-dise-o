@@ -18,3 +18,11 @@
 - **4.1** Que cada clase tendría su propio mapa, por lo tanto no compartirían batallas
 - **4.2** Tenemos que proporcionar un punto de acceso global a dicha instancia
 - **4.3** El patron Singleton
+
+## Ejercicio 5) 
+- **5.1** El controller se acopla a formatos externos y duplica la lógica implementada por el proveedor
+- **5.2** Usando mapeadores especificos para contruir objetos de dominio
+- **5.3** Adapter
+
+## Ejercicio 6) 
+
