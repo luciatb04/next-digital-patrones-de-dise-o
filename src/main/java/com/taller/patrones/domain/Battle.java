@@ -24,7 +24,15 @@ public class Battle {
         this.currentTurn = player.getSpeed() >= enemy.getSpeed() ? "player" : "enemy";
         log("¡Comienza la batalla! " + player.getName() + " vs " + enemy.getName());
     }
+    public void unfinish() {
+        this.finished = false;
+    }
 
+    public void removeLastLogEntry() {
+        if (!battleLog.isEmpty()) {
+            battleLog.removeLast();
+        }
+    }
     public Character getPlayer() { return player; }
     public Character getEnemy() { return enemy; }
     public String getCurrentTurn() { return currentTurn; }

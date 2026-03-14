@@ -17,4 +17,15 @@ public class BattleEventBell {
     public void notifyDamageApplied(Battle battle, Character attacker, Character defender, int damage, Attack attack){
         listeners.forEach(l->l.onDamageApplied(battle, attacker, defender, damage, attack));
     }
+    public void notifyDamageDealt(String battleId, Character attacker, Character defender, int damage, Attack attack) {
+        listeners.forEach(l -> l.onDamageDealt(battleId, attacker, defender, damage, attack));
+    }
+
+    public void notifyTurnChanged(String battleId, String currentTurn) {
+        listeners.forEach(l -> l.onTurnChanged(battleId, currentTurn));
+    }
+
+    public void notifyBattleEnd(String battleId, String winnerName) {
+        listeners.forEach(l -> l.onBattleEnd(battleId, winnerName));
+    }
 }

@@ -28,3 +28,8 @@
 - **6.1** si se añadde 5 suscriptores más, se tendria que modificar _applyDamage()_ y meter más lineas
 - **6.2** Para descoplar hacemos que el servicio publique un evento y otros objetos que estan suscritos lo escuchen
 - **6.3** Patron Observer
+
+## Ejercicio 7)
+- **7.1** Se debe guardar cada acción en un historial y programar la lógica inversa.
+- **7.2** Creando una clase especifica para el ataque con métodos que guarde en su interior la información necesaria.
+- **7.3** Patrón Command

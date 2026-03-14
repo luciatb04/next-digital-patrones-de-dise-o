@@ -1,5 +1,7 @@
 package com.taller.patrones.application;
 
+import com.taller.patrones.application.command.AttackCommand;
+import com.taller.patrones.application.command.BattleCommand;
 import com.taller.patrones.domain.Attack;
 import com.taller.patrones.domain.Battle;
 import com.taller.patrones.domain.Character;
@@ -12,6 +14,7 @@ import com.taller.patrones.application.observer.DamageTrackerObserver;
 import com.taller.patrones.application.observer.BattleLogObserver;
 import com.taller.patrones.application.observer.GameStateObserver;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -32,6 +35,8 @@ public class BattleService {
 
     public static final List<String> PLAYER_ATTACKS = List.of("TACKLE", "SLASH", "FIREBALL", "ICE_BEAM", "POISON_STING", "THUNDER", "METEORO");
     public static final List<String> ENEMY_ATTACKS = List.of("TACKLE", "SLASH", "FIREBALL");
+
+    private final List<BattleCommand> commandHistory = new ArrayList<>();
 
     public BattleService() {
         this.battleEventBell = new BattleEventBell();
@@ -75,7 +80,7 @@ public class BattleService {
 
         Attack attack = combatEngine.createAttack(attackName);
         int damage = combatEngine.calculateDamage(battle.getPlayer(), battle.getEnemy(), attack);
-        applyDamage(battle, battle.getPlayer(), battle.getEnemy(), damage, attack);
+        applyDamage(battleId,battle, battle.getPlayer(), battle.getEnemy(), damage, attack);
     }
 
     public void executeEnemyAttack(String battleId, String attackName) {
@@ -84,14 +89,14 @@ public class BattleService {
 
         Attack attack = combatEngine.createAttack(attackName != null ? attackName : "TACKLE");
         int damage = combatEngine.calculateDamage(battle.getEnemy(), battle.getPlayer(), attack);
-        applyDamage(battle, battle.getEnemy(), battle.getPlayer(), damage, attack);
+        applyDamage(battleId,battle, battle.getEnemy(), battle.getPlayer(), damage, attack);
     }
 
-    private void applyDamage(Battle battle, Character attacker, Character defender, int damage, Attack attack) {
-        defender.takeDamage(damage);
-       battleEventBell.notifyDamageApplied(battle, attacker, defender, damage, attack);
+    private void applyDamage(String battleId, Battle battle, Character attacker, Character defender, int damage, Attack attack) {
+        BattleCommand command = new AttackCommand(  battle, battleId, attacker, defender, attack, damage, battleEventBell);
+        command.execute();
+        commandHistory.add(command); // Nota: usa .push(command) si al final dejaste el Stack en vez de la List
     }
-
     public BattleStartResult startBattleFromExternal(String fighter1Name, int fighter1Hp, int fighter1Atk,
                                                      String fighter2Name, int fighter2Hp, int fighter2Atk) {
         Character player = new CharacterBuilder()
