@@ -25,4 +25,6 @@
 - **5.3** Adapter
 
 ## Ejercicio 6) 
-
+- **6.1** si se añadde 5 suscriptores más, se tendria que modificar _applyDamage()_ y meter más lineas
+- **6.2** Para descoplar hacemos que el servicio publique un evento y otros objetos que estan suscritos lo escuchen
+- **6.3** Patron Observer
