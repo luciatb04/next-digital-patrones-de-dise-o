@@ -33,3 +33,7 @@
 - **7.1** Se debe guardar cada acción en un historial y programar la lógica inversa.
 - **7.2** Creando una clase especifica para el ataque con métodos que guarde en su interior la información necesaria.
 - **7.3** Patrón Command
+
+## Ejercicio 8) 
+- **8.1** Que si una persona quiere conocer el sistema tiene que conocer cada detalle y dificulta el aprendizaje.  
+- **8.2** Patrón facade

@@ -12,4 +12,19 @@ public class DamageTrackerObserver implements BattleDamageListener {
         battle.setLastDamage(damage, target);
 
     }
+
+    @Override
+    public void onDamageDealt(String battleId, Character attacker, Character defender, int damage, Attack attack) {
+
+    }
+
+    @Override
+    public void onTurnChanged(String battleId, String currentTurn) {
+
+    }
+
+    @Override
+    public void onBattleEnd(String battleId, String winnerName) {
+
+    }
 }
