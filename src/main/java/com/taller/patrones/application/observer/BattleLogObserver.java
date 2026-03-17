@@ -9,4 +9,19 @@ public class BattleLogObserver implements BattleDamageListener{
     public void onDamageApplied(Battle battle, Character attacker, Character defender, int damage, Attack attack) {
         battle.log(attacker.getName() + " usa " + attack.getName() + " y hace " + damage + " de daño a " + defender.getName());
     }
+
+    @Override
+    public void onDamageDealt(String battleId, Character attacker, Character defender, int damage, Attack attack) {
+
+    }
+
+    @Override
+    public void onTurnChanged(String battleId, String currentTurn) {
+
+    }
+
+    @Override
+    public void onBattleEnd(String battleId, String winnerName) {
+
+    }
 }

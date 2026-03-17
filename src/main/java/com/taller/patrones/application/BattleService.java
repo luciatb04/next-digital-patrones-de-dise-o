@@ -94,7 +94,7 @@ public class BattleService {
     private void applyDamage(String battleId, Battle battle, Character attacker, Character defender, int damage, Attack attack) {
         BattleCommand command = new AttackCommand(  battle, battleId, attacker, defender, attack, damage, battleEventBell);
         command.execute();
-        commandHistory.add(command); // Nota: usa .push(command) si al final dejaste el Stack en vez de la List
+        commandHistory.add(command);
     }
     public BattleStartResult startBattleFromExternal(String fighter1Name, int fighter1Hp, int fighter1Atk,
                                                      String fighter2Name, int fighter2Hp, int fighter2Atk) {
