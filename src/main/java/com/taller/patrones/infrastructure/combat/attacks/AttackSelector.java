@@ -11,6 +11,7 @@ public class AttackSelector {
             case "POISON_STING" ->new PoisonStingAttack();
             case "THUNDER" -> new ThunderAttack();
             case "METEORO" -> new MeteoroAttack();
+            case "COMBO_TRIPLE" -> null;
             default -> new GolpeAttack();
         };
     }

@@ -2,10 +2,8 @@ package com.taller.patrones.application;
 
 import com.taller.patrones.application.command.AttackCommand;
 import com.taller.patrones.application.command.BattleCommand;
-import com.taller.patrones.domain.Attack;
-import com.taller.patrones.domain.Battle;
+import com.taller.patrones.domain.*;
 import com.taller.patrones.domain.Character;
-import com.taller.patrones.domain.CharacterBuilder;
 import com.taller.patrones.infrastructure.combat.CombatEngine;
 import com.taller.patrones.infrastructure.persistence.BattleRepository;
 
@@ -77,10 +75,23 @@ public class BattleService {
         Battle battle = battleRepository.findById(battleId);
         if (battle == null || battle.isFinished() || !battle.isPlayerTurn()) return;
 
-        Attack attack = combatEngine.createAttack(attackName);
-        int damage = combatEngine.calculateDamage(battle.getPlayer(), battle.getEnemy(), attack);
-        applyDamage(battleId,battle, battle.getPlayer(), battle.getEnemy(), damage, attack);
+        if ("COMBO_TRIPLE".equalsIgnoreCase(attackName)) {
+            // Combo: Tackle + Slash + Fireball
+            java.util.List<AttackComponent> combo = java.util.List.of(
+                    new SimpleAttackComponent(combatEngine.createAttack("TACKLE")),
+                    new SimpleAttackComponent(combatEngine.createAttack("SLASH")),
+                    new SimpleAttackComponent(combatEngine.createAttack("FIREBALL"))
+            );
+            CompositeAttack composite = new CompositeAttack(combo);
+            composite.execute(battle.getPlayer(), battle.getEnemy(), battle, combatEngine);
+            // No undo para combos por simplicidad
+        } else {
+            Attack attack = combatEngine.createAttack(attackName);
+            int damage = combatEngine.calculateDamage(battle.getPlayer(), battle.getEnemy(), attack);
+            applyDamage(battleId,battle,battle.getPlayer(), battle.getEnemy(), damage, attack);
+        }
     }
+
 
     public void executeEnemyAttack(String battleId, String attackName) {
         Battle battle = battleRepository.findById(battleId);

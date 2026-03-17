@@ -37,3 +37,7 @@
 ## Ejercicio 8) 
 - **8.1** Que si una persona quiere conocer el sistema tiene que conocer cada detalle y dificulta el aprendizaje.  
 - **8.2** Patrón facade
+
+## EJercicio 9)
+- **9.1** un objeto que contiene otros ataques y los ejecuta secuencialmente
+- **9.2** Patron composite
